@@ -258,7 +258,7 @@
               span {{$t('common:page.editPage')}}
             v-alert.mb-5(v-if='!isPublished', color='red', outlined, icon='mdi-minus-circle', dense)
               .caption {{$t('common:page.unpublishedWarning')}}
-            .contents(ref='container')
+            .contents(ref='container')#no-copy
               slot(name='contents')
             .comments-container#discussion(v-if='commentsEnabled && commentsPerms.read && !printView')
               .comments-header

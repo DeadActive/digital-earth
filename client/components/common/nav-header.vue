@@ -1,5 +1,5 @@
 <template lang='pug'>
-  v-app-bar.nav-header(color='black', dark, app, :clipped-left='!$vuetify.rtl', :clipped-right='$vuetify.rtl', fixed, flat, :extended='searchIsShown && $vuetify.breakpoint.smAndDown')
+  v-app-bar.nav-header(color='#1D273E', dark, app, :clipped-left='!$vuetify.rtl', :clipped-right='$vuetify.rtl', fixed, flat, :extended='searchIsShown && $vuetify.breakpoint.smAndDown')
     v-toolbar(color='deep-purple', flat, slot='extension', v-if='searchIsShown && $vuetify.breakpoint.smAndDown')
       v-text-field(
         ref='searchFieldMobile'
@@ -17,7 +17,7 @@
         @keyup.enter='searchEnter'
         autocomplete='none'
       )
-    v-layout(row)
+    v-layout#app-header(row)
       v-flex(xs5, md4)
         v-toolbar.nav-header-inner(color='black', dark, flat, :class='$vuetify.rtl ? `pr-3` : `pl-3`')
           v-avatar(tile, size='34', @click='goHome')
@@ -61,6 +61,7 @@
                 rounded
                 hide-details,
                 prepend-inner-icon='mdi-magnify',
+                background-color='#333347',
                 :loading='searchIsLoading',
                 @keyup.enter='searchEnter'
                 @keyup.esc='searchClose'
@@ -115,7 +116,7 @@
                   v-list-item(@click='changeLocale(lc)')
                     v-list-item-action(style='min-width:auto;'): v-chip(:color='lc.code === locale ? `blue` : `grey`', small, label, dark) {{lc.code.toUpperCase()}}
                     v-list-item-title {{lc.name}}
-            v-divider(vertical)
+            v-divider(vertical, inset)
 
           //- PAGE ACTIONS
 
@@ -160,7 +161,7 @@
                 v-list-item.pl-4(@click='pageDelete', v-if='hasDeletePagesPermission')
                   v-list-item-avatar(size='24', tile): v-icon(color='red darken-2') mdi-trash-can-outline
                   v-list-item-title.body-2 {{$t('common:header.delete')}}
-            v-divider(vertical)
+            v-divider(vertical, inset)
 
           //- NEW PAGE
 
@@ -170,7 +171,7 @@
                 v-btn(icon, tile, height='64', v-on='on', @click='pageNew', :aria-label='$t(`common:header.newPage`)')
                   v-icon(color='grey') mdi-text-box-plus-outline
               span {{$t('common:header.newPage')}}
-            v-divider(vertical)
+            v-divider(vertical, inset)
 
           //- ADMIN
 
@@ -183,7 +184,7 @@
             v-btn(v-else, text, tile, height='64', href='/', :aria-label='$t(`common:actions.exit`)')
               v-icon(left, color='grey') mdi-exit-to-app
               span {{$t('common:actions.exit')}}
-            v-divider(vertical)
+            v-divider(vertical, inset)
 
           //- ACCOUNT
 
@@ -237,12 +238,6 @@
     page-selector(mode='move', v-model='movePageModal', :open-handler='pageMoveRename', :path='path', :locale='locale')
     page-selector(mode='create', v-model='duplicateOpts.modal', :open-handler='pageDuplicateHandle', :path='duplicateOpts.path', :locale='duplicateOpts.locale')
     page-delete(v-model='deletePageModal', v-if='path && path.length')
-
-    .nav-header-dev(v-if='isDevMode')
-      v-icon mdi-alert
-      div
-        .overline DEVELOPMENT VERSION
-        .overline This code base is NOT for production use!
 </template>
 
 <script>
@@ -471,6 +466,10 @@ export default {
 </script>
 
 <style lang='scss'>
+
+#toolbar-content{
+        background-color: #1D273E;
+}
 
 .nav-header {
   //z-index: 1000;

@@ -22,6 +22,13 @@ router.get('/robots.txt', (req, res, next) => {
 })
 
 /**
+ * Group select
+ */
+router.get('/selector', (req, res, next) => {
+  res.render('selector')
+})
+
+/**
  * Health Endpoint
  */
 router.get('/healthz', (req, res, next) => {

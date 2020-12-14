@@ -1,0 +1,31 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=iboss
+      - POSTGRES_PASSWORD=iboss
+    ports:
+      - "5432:5432"
+  keycloak:
+    image: quay.io/keycloak/keycloak:11.0.3
+    ports:
+      - "8080:8080"
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=admin
+  wiki:
+    image: digiearth/wiki
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_TYPE=postgres
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=iboss
+      - DB_PASS=iboss
+      - DB_NAME=postgres
+    depends_on:
+      - db
+      - keycloak
