@@ -66,6 +66,26 @@ $blue-comments: #464F69;
 user-select: none;
 }
 
+.login{
+  &  .v-text-field{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    & input{
+      color: white !important;
+      max-height: 48px;
+      height: 48px;
+    }
+
+    & .v-label{
+      color: #828282;
+    }
+    & .v-input__slot::before{
+      border-color: #464F69 !important;
+    }
+  }
+}
+
+
 .theme--light.v-card {
   //background-color: $blue-accent;
   color: white;
