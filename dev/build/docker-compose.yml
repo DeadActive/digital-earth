@@ -4,28 +4,22 @@ services:
     image: postgres
     environment:
       - POSTGRES_DB=postgres
-      - POSTGRES_USER=iboss
-      - POSTGRES_PASSWORD=iboss
+      - POSTGRES_USER=wiki
+      - POSTGRES_PASSWORD=F6FvFcrQeCZhN7nT
     ports:
       - "5432:5432"
-  keycloak:
-    image: quay.io/keycloak/keycloak:11.0.3
-    ports:
-      - "8080:8080"
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=admin
+    restart: always
   wiki:
-    image: digiearth/wiki
+    image: cr.yandex/crpi14thvec05jq8tnn5/wiki:latest
     ports:
-      - "3000:3000"
+      - "80:3000"
     environment:
       - DB_TYPE=postgres
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_USER=iboss
-      - DB_PASS=iboss
+      - DB_USER=wiki
+      - DB_PASS=F6FvFcrQeCZhN7nT
       - DB_NAME=postgres
     depends_on:
       - db
-      - keycloak
+    restart: always

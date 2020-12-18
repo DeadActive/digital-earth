@@ -8,7 +8,7 @@ v-app.selector(:dark="$vuetify.theme.dark")
         v-col(cols="12", md="4").card-column
           a.card(href="/Аэрофотосъемка/home", :class="{disabled: !afs}")
             img.v-img(src="/_assets/img/afs.png")
-            h3.white--text Аэрофотосъемка
+            h3.white--text Аэрофотосъемка и 3D-город
         v-col(cols="12", md="4").card-column
           a.card(href="/Космосъемка/home", :class="{disabled: !space}")
             img.v-img(src="/_assets/img/space.png")

@@ -71,8 +71,12 @@ user-select: none;
   color: white;
 }
 
-.theme--light.v-list{
-  background-color: $blue-accent;
+#page-contents.theme--light.v-list{
+  background-color: $blue-accent !important;
+}
+
+.v-list-item{
+  background: rgba(0,0,0,0) !important;
 }
 
 .white-light{

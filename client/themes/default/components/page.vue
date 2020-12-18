@@ -59,7 +59,7 @@
             v-card.sidebar-blue(style='border-radius: 12px;')
               v-card.no-shadow(v-if='tocDecoded.length', color='#333347')
                 .overline.pa-5.pb-0(:class='$vuetify.theme.dark ? `blue--text text--lighten-2` : `light--text`') {{$t('common:page.toc')}}
-                v-list.pb-3(dense, nav, :class='$vuetify.theme.dark ? `darken-3-d3` : ``')
+                v-list.pb-3#page-contents(dense, nav, :class='$vuetify.theme.dark ? `darken-3-d3` : ``')
                   template(v-for='(tocItem, tocIdx) in tocDecoded')
                     v-list-item(@click='$vuetify.goTo(tocItem.anchor, scrollOpts)')
                       v-icon(color='grey', small) {{ $vuetify.rtl ? `mdi-chevron-left` : `mdi-chevron-right` }}
